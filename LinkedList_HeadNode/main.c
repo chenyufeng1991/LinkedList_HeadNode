@@ -29,6 +29,32 @@ void InitialList(Node **pNode){
     printf("%s函数执行，带头结点的单链表初始化完成\n",__FUNCTION__);
 }
 
+//创建带头结点的单链表
+void CreateList(Node *pNode){
+
+    Node *pInsert;
+    Node *pMove;
+    pInsert = (Node *)malloc(sizeof(Node));
+    memset(pInsert, 0, sizeof(Node));
+    pInsert->next = NULL;
+
+    scanf("%d",&(pInsert->element));
+    pMove = pNode;
+    while (pInsert->element > 0) {
+
+        pMove->next = pInsert;
+        pMove = pInsert;
+
+        pInsert = (Node *)malloc(sizeof(Node));
+        memset(pInsert, 0, sizeof(Node));
+        pInsert->next = NULL;
+
+        scanf("%d",&(pInsert->element));
+    }
+
+    printf("%s函数执行,带头结点的单链表创建成功\n",__FUNCTION__);
+}
+
 int main(int argc, const char * argv[]) {
 
     Node *pList;
@@ -42,3 +68,7 @@ int main(int argc, const char * argv[]) {
 
     return 0;
 }
+
+
+
+
