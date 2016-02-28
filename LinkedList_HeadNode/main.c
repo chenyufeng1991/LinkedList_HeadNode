@@ -24,9 +24,17 @@ typedef struct NodeList{
 //初始化带头结点的单链表
 void InitialList(Node **pNode){
 
+    //个人建议每一次malloc分配内存空间后，都要进行判断分配是否成功，也即判断是否为空；
+    //此时的这个pNode就是一个头结点；
+    //初始化成功后，其实相当于是一个正常的链表了；
     *pNode = (Node *)malloc(sizeof(Node));
-    (*pNode)->next = NULL;
-    printf("%s函数执行，带头结点的单链表初始化完成\n",__FUNCTION__);
+    if (*pNode == NULL) {
+        printf("%s函数执行，内存分配失败，初始化单链表失败",__FUNCTION__);
+    }else{
+
+        (*pNode)->next = NULL;
+        printf("%s函数执行，带头结点的单链表初始化完成\n",__FUNCTION__);
+    }
 }
 
 //创建带头结点的单链表
@@ -37,7 +45,7 @@ void CreateList(Node *pNode){
      */
     Node *pInsert;
     Node *pMove;
-    pInsert = (Node *)malloc(sizeof(Node));
+    pInsert = (Node *)malloc(sizeof(Node));//需要检测分配内存是否成功 pInsert == NULL  ?
     memset(pInsert, 0, sizeof(Node));
     pInsert->next = NULL;
 
@@ -48,7 +56,7 @@ void CreateList(Node *pNode){
         pMove->next = pInsert;
         pMove = pInsert;
 
-        pInsert = (Node *)malloc(sizeof(Node));
+        pInsert = (Node *)malloc(sizeof(Node)); //需要检测分配内存是否成功 pInsert == NULL  ?
         memset(pInsert, 0, sizeof(Node));
         pInsert->next = NULL;
 
