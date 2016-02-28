@@ -6,10 +6,39 @@
 //  Copyright © 2016年 chenyufengweb. All rights reserved.
 //
 
+/**
+ *  初始化、创建一个带头结点的单链表
+ */
+
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef int elemType;
+typedef struct NodeList{
+
+    int element;
+    struct NodeList *next;
+}Node;
+
+//初始化带头结点的单链表
+void InitialList(Node **pNode){
+
+    *pNode = (Node *)malloc(sizeof(Node));
+    (*pNode)->next = NULL;
+    printf("%s函数执行，带头结点的单链表初始化完成\n",__FUNCTION__);
+}
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+
+    Node *pList;
+
+    InitialList(&pList);
+
+
+
+
+
+
     return 0;
 }
