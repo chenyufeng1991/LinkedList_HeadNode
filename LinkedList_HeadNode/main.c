@@ -114,6 +114,21 @@ int SizeList(Node *pNode){
     return i;
 }
 
+//6.判断带头结点的单链表是否为空，为空则返回1，否则返回0
+int IsEmptyList(Node *pNode){
+    /**
+     *  当只有一个头结点的时候，该链表就为空
+     */
+    if (pNode->next == NULL) {
+        printf("%s函数执行，带头结点的链表为空\n",__FUNCTION__);
+        return 1;
+    }
+
+    printf("%s函数执行，带头结点的链表非空\n",__FUNCTION__);
+
+    return 0;
+}
+
 
 int main(int argc, const char * argv[]) {
 
@@ -126,8 +141,11 @@ int main(int argc, const char * argv[]) {
 
     SizeList(pList);
 
+    IsEmptyList(pList);
+
     ClearList(pList);
     PrintList(pList);
+
 
     return 0;
 }
