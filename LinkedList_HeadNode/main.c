@@ -32,6 +32,9 @@ void InitialList(Node **pNode){
 //创建带头结点的单链表
 void CreateList(Node *pNode){
 
+    /**
+     *  就算一开始输入的数字小于等于0，带头结点的单链表都是会创建成功的，只是这个单链表为空而已，也就是里面除了头结点就没有其他节点了。
+     */
     Node *pInsert;
     Node *pMove;
     pInsert = (Node *)malloc(sizeof(Node));
@@ -55,19 +58,37 @@ void CreateList(Node *pNode){
     printf("%s函数执行,带头结点的单链表创建成功\n",__FUNCTION__);
 }
 
+//打印带头结点的单链表
+void PrintList(Node *pNode){
+    /**
+     *  注意这里，如果单链表为空（只有一个头结点），我也让它打印（打印成功）。只是里面没有元素，打出来是空的而已。
+     */
+        Node *pMove;
+        pMove = pNode->next;
+        while (pMove != NULL) {
+            printf("%d ",pMove->element);
+            pMove = pMove->next;
+        }
+
+        printf("\n%s函数执行，打印带头结点的单链表成功\n",__FUNCTION__);
+}
+
 int main(int argc, const char * argv[]) {
 
     Node *pList;
 
     InitialList(&pList);
 
-
-
-
-
+    CreateList(pList);
+    PrintList(pList);
 
     return 0;
 }
+
+
+
+
+
 
 
 
