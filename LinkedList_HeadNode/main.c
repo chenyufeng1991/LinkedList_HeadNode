@@ -21,7 +21,7 @@ typedef struct NodeList{
     struct NodeList *next;
 }Node;
 
-//初始化带头结点的单链表
+//1.初始化带头结点的单链表
 void InitialList(Node **pNode){
 
     //个人建议每一次malloc分配内存空间后，都要进行判断分配是否成功，也即判断是否为空；
@@ -37,7 +37,7 @@ void InitialList(Node **pNode){
     }
 }
 
-//创建带头结点的单链表
+//2.创建带头结点的单链表
 void CreateList(Node *pNode){
 
     /**
@@ -66,10 +66,10 @@ void CreateList(Node *pNode){
     printf("%s函数执行,带头结点的单链表创建成功\n",__FUNCTION__);
 }
 
-//打印带头结点的单链表
+//3.打印带头结点的单链表
 void PrintList(Node *pNode){
     /**
-     *  注意这里，如果单链表为空（只有一个头结点），我也让它打印（打印成功）。只是里面没有元素，打出来是空的而已。
+     *  注意这里，如果单链表为空（只有一个头结点），我也让它打印（打印成功）。只是里面没有元素，打出来是空的而已,所以在控制台上就是一行空的；
      */
         Node *pMove;
         pMove = pNode->next;
@@ -81,6 +81,22 @@ void PrintList(Node *pNode){
         printf("\n%s函数执行，打印带头结点的单链表成功\n",__FUNCTION__);
 }
 
+//4.清除线性表中的所有元素，即释放所有节点（除了头结点），使之成为一个空表
+void ClearList(Node *pNode){
+
+    Node *pMove;
+    pMove = pNode->next;
+    while (pMove != NULL) {
+
+        pNode->next = pMove->next;
+        free(pMove);
+        pMove = pNode->next;
+    }
+
+    printf("%s函数执行，清空带头结点的链表成功\n",__FUNCTION__);
+}
+
+
 int main(int argc, const char * argv[]) {
 
     Node *pList;
@@ -90,8 +106,16 @@ int main(int argc, const char * argv[]) {
     CreateList(pList);
     PrintList(pList);
 
+    ClearList(pList);
+    PrintList(pList);
+
     return 0;
 }
+
+
+
+
+
 
 
 
