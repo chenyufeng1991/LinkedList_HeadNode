@@ -96,6 +96,24 @@ void ClearList(Node *pNode){
     printf("%s函数执行，清空带头结点的链表成功\n",__FUNCTION__);
 }
 
+//5.返回带头结点的单链表的长度
+int SizeList(Node *pNode){
+    /**
+     *  当只有一个头结点的时候，size = 0；头节点不计算到链表长度中。
+     */
+    int i = 0;
+    Node *pMove;
+    pMove = pNode->next;
+    while (pMove != NULL) {
+        i++;
+        pMove = pMove->next;
+    }
+
+    printf("%s函数执行，带头结点的单链表的长度为：%d\n",__FUNCTION__,i);
+
+    return i;
+}
+
 
 int main(int argc, const char * argv[]) {
 
@@ -105,6 +123,8 @@ int main(int argc, const char * argv[]) {
 
     CreateList(pList);
     PrintList(pList);
+
+    SizeList(pList);
 
     ClearList(pList);
     PrintList(pList);
