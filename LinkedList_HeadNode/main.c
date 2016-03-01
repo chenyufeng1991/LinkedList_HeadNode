@@ -171,6 +171,27 @@ elemType* GetElemAddr(Node *pNode,int x){
     return NULL;
 }
 
+//9.把单链表中第pos个结点的值修改为x的值
+Node* ModifyElem(Node *pNode,int pos,int x){
+
+    int i = 1;
+    Node *pMove;
+    pMove = pNode->next;
+    while (pMove != NULL) {
+        if (i == pos) {
+            pMove->element = x;
+            printf("%s函数执行，把pos=%d位置的值改为%d成功\n",__FUNCTION__,pos,x);
+            return pNode;
+        }
+        i++;
+        pMove = pMove->next;
+    }
+    printf("%s函数执行，链表为空或者输入pos值非法，修改值失败\n",__FUNCTION__);
+
+    return pNode;
+}
+
+
 int main(int argc, const char * argv[]) {
 
     Node *pList;
@@ -187,6 +208,9 @@ int main(int argc, const char * argv[]) {
     GetElement(pList, 3);
 
     GetElemAddr(pList, 5);
+
+    ModifyElem(pList, 2, 111);
+    PrintList(pList);
 
     ClearList(pList);
     PrintList(pList);
