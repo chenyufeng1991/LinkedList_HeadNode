@@ -191,6 +191,20 @@ Node* ModifyElem(Node *pNode,int pos,int x){
     return pNode;
 }
 
+//10.向单链表的表头插入一个元素
+Node *InsertHeadList(Node *pNode,int x){
+
+    Node *pInsert;
+    pInsert = (Node *)malloc(sizeof(Node));
+    memset(pInsert, 0, sizeof(Node));
+    pInsert->element = x;
+
+    pInsert->next = pNode->next;
+    pNode->next = pInsert;
+
+    printf("%s函数执行，在表头插入元素%d成功\n",__FUNCTION__,x);
+    return pNode;
+}
 
 int main(int argc, const char * argv[]) {
 
@@ -211,6 +225,10 @@ int main(int argc, const char * argv[]) {
 
     ModifyElem(pList, 2, 111);
     PrintList(pList);
+
+    InsertHeadList(pList,1234);
+    PrintList(pList);
+    SizeList(pList);
 
     ClearList(pList);
     PrintList(pList);
