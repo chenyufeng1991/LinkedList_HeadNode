@@ -206,6 +206,27 @@ Node *InsertHeadList(Node *pNode,int x){
     return pNode;
 }
 
+// 11.向单链表的末尾添加一个元素
+Node *InsertTailList(Node *pNode,int x){
+
+    Node *pMove;
+    Node *pInsert;
+    pInsert = (Node *)malloc(sizeof(Node));
+    memset(pInsert, 0, sizeof(Node));
+    pInsert->element = x;
+    pInsert->next = NULL;
+
+    pMove = pNode;
+    while (pMove->next != NULL) {
+        pMove = pMove->next;
+    }
+    pMove->next = pInsert;
+
+    printf("%s函数执行，在表尾插入元素%d成功\n",__FUNCTION__,x);
+
+    return pNode;
+}
+
 int main(int argc, const char * argv[]) {
 
     Node *pList;
@@ -230,22 +251,13 @@ int main(int argc, const char * argv[]) {
     PrintList(pList);
     SizeList(pList);
 
+    InsertTailList(pList,9999);
+    PrintList(pList);
+    SizeList(pList);
+
     ClearList(pList);
     PrintList(pList);
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
