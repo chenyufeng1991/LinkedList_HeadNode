@@ -152,6 +152,24 @@ int GetElement(Node *pNode,int pos){
     return -1;
 }
 
+//8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL
+elemType* GetElemAddr(Node *pNode,int x){
+
+    Node *pMove;
+    pMove = pNode->next;
+
+    while (pMove != NULL) {
+        if (pMove->element == x) {
+            printf("%s函数执行，查找到x=%d的内存地址为:0x%x\n",__FUNCTION__,x,&(pMove->element));
+            return &(pMove->element);
+        }
+        pMove = pMove->next;
+    }
+
+    printf("%s函数执行，在带头结点的单链表中没有找到x=%d的值，无法获得内存地址\n",__FUNCTION__,x);
+
+    return NULL;
+}
 
 int main(int argc, const char * argv[]) {
 
@@ -168,9 +186,10 @@ int main(int argc, const char * argv[]) {
 
     GetElement(pList, 3);
 
+    GetElemAddr(pList, 5);
+
     ClearList(pList);
     PrintList(pList);
-
 
     return 0;
 }
