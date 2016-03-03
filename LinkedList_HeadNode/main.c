@@ -29,7 +29,7 @@ void InitialList(Node **pNode){
     //初始化成功后，其实相当于是一个正常的链表了；
     *pNode = (Node *)malloc(sizeof(Node));
     if (*pNode == NULL) {
-        printf("%s函数执行，内存分配失败，初始化单链表失败",__FUNCTION__);
+        printf("%s函数执行，内存分配失败，初始化单链表失败\n",__FUNCTION__);
     }else{
 
         (*pNode)->next = NULL;
